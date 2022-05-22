@@ -9,7 +9,7 @@
       "request": "attach",
       "name": "api",
       "skipFiles": ["<node_internals>/**"],
-      "outFiles": ["${workspaceFolder}/**/*.js", "${workspaceFolder}/**/*.ts"]
+      "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]
 }
