@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script> -->
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <style>
       #dataDeGeracao {
@@ -24,24 +24,41 @@
   <body>
     <div id="dataDeGeracao"></div>
     <div style="text-align: center">
-      <h5>S.M.C.C.A</h5>
-      <h5>SISTEMA DE MONITORAMENTO DE COMPRESSOR CHILLER E AR CONDICIONADO</h5>
-      <h5>RELATÓRIO DE ACOMPANHAMENTO</h5>
+      <h5 style="color: #fff">S.M.C.C.A</h5>
+      <h5 style="color: #fff">
+        SISTEMA DE MONITORAMENTO DE COMPRESSOR CHILLER E AR CONDICIONADO
+      </h5>
+      <h5 style="color: #fff">RELATÓRIO DE ACOMPANHAMENTO</h5>
     </div>
     <div style="border: 1px solid red; background: red"></div>
 
     <p style="font-size: 0.7rem"><b>Cliente</b>: Hospital Ortopedico</p>
+    <p style="font-size: 0.7rem"><b>Equipamento</b>: SIGNA FSA</p>
     <p style="font-size: 0.7rem">
-      <b>Equipamento</b>: SIGNA FSA Endereço: Av. Getúlio Vargas, 909 - Centro,
-      Feira de Santana - BA
+      <b>Endereço:</b> Av. Getúlio Vargas, 909 - Centro, Feira de Santana - BA
     </p>
-    <p style="font-size: 0.7rem"><b>Responsável</b>: Soraya Freitas</p>
-    <p style="font-size: 0.7rem"><b>Nº Série</b>: 0</p>
+    <p style="font-size: 0.7rem">
+      <b>Telefone</b>: (75) 3321-905 <b style="margin-left: 100px">CNPJ</b>:
+      03.611.193/0001-05
+    </p>
+    <p style="font-size: 0.7rem">
+      <b>Nº Série</b>: 0 <b style="margin-left: 160px">Responsável</b>: Soraya
+      Freitas
+    </p>
     <p style="font-size: 0.7rem"><b>NF-e</b>: 0000000000000</p>
     <p style="font-size: 0.7rem"><b>Período</b>: 01/05/2022 a 31/05/2022</p>
-    <p style="font-size: 0.7rem"><b>Telefone</b>: (75) 3321-905</p>
-    <p style="font-size: 0.7rem"><b>CNPJ</b>: 03.611.193/0001-05</p>
 
+    <div
+      style="
+        border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+      "
+    >
+      <h3 style="color: #fff">GRÁFICOS</h3>
+    </div>
     <figure class="highcharts-figure">
       <div id="notification"></div>
     </figure>
@@ -51,7 +68,11 @@
         chart: {
           type: "column",
         },
-
+        credits: {
+          enabled: true,
+          text: "appsupply",
+          href: "https://painel.appsupply.ml/",
+        },
         title: {
           text: "HISTÓRICO DE NOTIFICAÇÕES",
         },
@@ -93,10 +114,10 @@
           },
         ],
       });
-      chart.render();
+      /*  chart.render();
       chart.exportChart({
         format: "png",
-      });
+      }); */
     </script>
   </body>
 </html>
