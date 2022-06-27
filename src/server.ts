@@ -18,7 +18,7 @@ app.use(express.json())
 function exportChart() {
     //Export settings
     var exportSettings = {
-        type: 'svg',
+        type: 'png',
         options: {
             title: {
                 text: 'My Chart'
@@ -51,7 +51,11 @@ function exportChart() {
         //O resultado da exportação está agora em res.
         //Se a saída não for PDF ou SVG, ela será codificada em base64 (res.data).
         //Se a saída for um PDF ou SVG, ela conterá um nome de arquivo (res.filename).
-
+        if (err) {
+            console.log(err)
+        }
+        console.log(res)
+        return res.data
         //Mate o pool quando terminarmos com ele e saia do aplicativo
         exporter.killPool();
         process.exit(1);
@@ -114,9 +118,6 @@ async function postChart() {
 }
 
 app.get('/', (request, response) => {
-    // exportChart();
-    console.log(postChart())
-    return response.status(200).send("<img src='' /> ");
     const filePath = path.join(__dirname, "print.html")
     ejs.renderFile(filePath, (err, html) => {
         if (err) {
@@ -158,13 +159,19 @@ app.get('/pdf', async (request, response) => {
         await page.goto('http://localhost:3000/', {
             waitUntil: 'networkidle0'
         })
-        const pdf = await page.pdf({
-            path: path.join(__dirname, `../temp/pdf/${"id_5_" + dataCreate + ".pdf"}`), format: 'a4'
+
+        await page.waitForSelector('body > figure');
+        const grafico = await page.$('body > figure')
+        // const pdf = await page.pdf({
+        //     path: path.join(__dirname, `../temp/pdf/${"id_5_" + dataCreate + ".pdf"}`), format: 'a4'
+        // })
+        const pdf = await grafico?.screenshot({
+            path: path.join(__dirname, `../temp/print/${"teste.png"}`), type: "png"
         })
 
         await browser.close()
 
-        response.contentType("application/pdf")
+        response.contentType("image/png")
 
         return response.send(pdf)
     } catch (error) {

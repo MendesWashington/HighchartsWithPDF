@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script> -->
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
     <style>
       #dataDeGeracao {
         text-align: end;
@@ -50,7 +51,7 @@
 
     <div
       style="
-        border: 1px solid red;
+        background: blue;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -62,6 +63,7 @@
     <figure class="highcharts-figure">
       <div id="notification"></div>
     </figure>
+    <button id="button">View SVG</button>
 
     <script>
       const chart = Highcharts.chart("notification", {
@@ -118,6 +120,16 @@
       chart.exportChart({
         format: "png",
       }); */
+
+      document.getElementById("button").addEventListener("click", () => {
+        var svg = chart
+          .getSVG()
+          
+          // .replace(/</g, "\n&lt;") // make it slightly more readable
+          // .replace(/>/g, "&gt;");
+
+        console.log(svg);
+      });
     </script>
   </body>
 </html>
